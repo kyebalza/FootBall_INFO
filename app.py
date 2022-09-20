@@ -157,7 +157,7 @@ def get_posts():
             posts = list(db.posts.find({}).sort("date", -1).limit(20))
         else:
             posts = list(db.posts.find({"username": username_receive}).sort("date", -1).limit(20))
-        posts = list(db.posts.find({}).sort("date", -1).limit(20))
+
         for post in posts:
             post["_id"] = str(post["_id"])
             for post in posts:
