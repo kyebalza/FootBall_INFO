@@ -3,8 +3,8 @@
         console.log(post_id, type)
             let $a_like = $(`#${post_id} a[aria-label='heart']`)
             let $i_like = $a_like.find("i")
-        if ($i_like.hasClass("fa-heart")) {
-            $.ajax({
+        if ($i_like.hasClass("fa-heart")) {                                            // fa-heart    채워진 하트
+            $.ajax({                                                                   // fa-heart-o  빈 하트
                 type: "POST",
                 url: "/update_like",
                 data: {
@@ -36,6 +36,7 @@
 
          }
     }
+
 
         function post() {
             let comment = $("#textarea-post").val()
@@ -71,6 +72,7 @@
             }
             return `${date.getFullYear()}년 ${date.getMonth() + 1}월 ${date.getDate()}일`
         }
+
             function num2str(count) {
             if (count > 10000) {
                 return parseInt(count / 1000) + "k"
@@ -130,6 +132,7 @@
                                                             <span class="icon is-small"><i class="fa ${class_heart}"
                                                                                            aria-hidden="true"></i></span>&nbsp;<span class="like-num">${num2str(count_heart)}</span>
                                                         </a>
+                                                 
                                                     </div>
 
                                                 </nav>

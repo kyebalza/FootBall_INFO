@@ -16,6 +16,7 @@
     <meta property="og:image" content="{{ url_for('static', filename='ogimg.png') }}"/>
     <!-- Bulma CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
+
     <!-- Font Awesome CSS -->
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='mystyle.css') }}" rel="stylesheet">
@@ -24,12 +25,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script src="{{ url_for('static', filename='myjs.js') }}"></script>
+    <!-- Bootstrap -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
     <script>
 
           $(document).ready(function () {
             get_posts()
         })
     </script>
+    <style>
+
+    </style>
 
 </head>
 <body>
@@ -38,7 +50,7 @@
         <a class="navbar-item" href="/">
             <img src="{{ url_for('static', filename='logo.png') }}">
             <strong class="is-sparta"
-                    style="font-family: 'Stylish', sans-serif;font-size: larger;">SWEETER</strong>
+                    style="font-family: 'Stylish', sans-serif;font-size: larger;">SWEETE</strong>
         </a>
     </div>
 </nav>

@@ -171,13 +171,13 @@ def get_posts():
 
 @app.route('/update_like', methods=['POST'])
 def update_like():
-    token_receive = request.cookies.get('mytoken')
+    token_receive = request.cookies.get('mytoken')                              # 현재 사용자의 컴퓨터에 저장된 쿠키에서 mytoken 을 가져옴
     try:
-        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        user_info = db.users.find_one({"username": payload["id"]})
-        post_id_receive = request.form["post_id_give"]
-        type_receive = request.form["type_give"]
-        action_receive = request.form["action_give"]
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])   # 토큰 정보
+        user_info = db.users.find_one({"username": payload["id"]})              # id 부분만 가져옴
+        post_id_receive = request.form["post_id_give"]                          # post id
+        type_receive = request.form["type_give"]                             # 좋아요
+        action_receive = request.form["action_give"]                            # 좋아요를 누른건지 취소를 누른건지
         doc = {
             "post_id": post_id_receive,
             "username": user_info["username"],
@@ -188,10 +188,10 @@ def update_like():
         else:
             db.likes.delete_one(doc)
         count = db.likes.count_documents({"post_id": post_id_receive, "type": type_receive})
-        return jsonify({"result": "success", 'msg': 'updated', "count": count})
-        return jsonify({"result": "success", 'msg': 'updated'})
-    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
-        return redirect(url_for("home"))
+        return jsonify({"result": "success", 'msg': 'updated', "count": count})                 #클라이언트에게 어떤 포스트가 몇개의 좋아요를 갖고 있는지 전달
+
+    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):  # 토큰의 로그인 시간 만료, 토큰 디코딩 실패
+        return redirect(url_for("home"))                            # flask에서 제공하는 url_for 함수 = 함수값을 인자로 받음.
 
 
 if __name__ == '__main__':
